@@ -1,0 +1,130 @@
+================================================================================
+                    PowerShell Troubleshooting Scripts
+                        Repository Map & Quick Guide
+                     github.com/nicotav/powershell
+================================================================================
+
+📁 REPOSITORY STRUCTURE
+================================================================================
+
+powershell/
+├─ Core/                          PowerShell function modules
+│  ├─ Network/
+│  │  └─ Network.ps1
+│  ├─ System/
+│  │  └─ System.ps1
+│  ├─ Storage/
+│  │  └─ Storage.ps1
+│  ├─ Services/
+│  │  └─ Services.ps1
+│  └─ Security/
+│     └─ Security.ps1
+├─ Examples.ps1                   Showcase script with usage examples
+├─ ConsoleMap.txt                 This file - repository map
+└─ README.md                       Full documentation
+
+
+🌐 NETWORK FUNCTIONS (Core/Network/Network.ps1)
+================================================================================
+
+Test-NetworkConnectivity      Test connectivity to a target host or port
+Get-DNSResolution             Resolve DNS for a hostname
+Get-FirewallStatus            Check Windows Firewall status and profiles
+
+
+🖥️  SYSTEM FUNCTIONS (Core/System/System.ps1)
+================================================================================
+
+Get-SystemInfo                 Retrieve comprehensive system information
+Get-EventLogErrors             Get recent error events from Windows Event Logs
+Get-SystemUptime               Check system uptime since last boot
+Get-PerformanceSnapshot        Take a snapshot of system performance metrics
+
+
+💾 STORAGE FUNCTIONS (Core/Storage/Storage.ps1)
+================================================================================
+
+Get-DiskSpaceReport            Generate disk space usage report for all drives
+Find-LargeFiles                Find large files in specified path
+Clear-TempFiles                Clear temporary files from common locations
+
+
+⚙️  SERVICES FUNCTIONS (Core/Services/Services.ps1)
+================================================================================
+
+Get-ServiceStatus              Get detailed status information for a service
+Get-FailedServices             List services that should run but are stopped
+Get-ServiceDependencies        Get the dependency tree for a service
+Restart-ServiceSafely          Restart a service with dependency handling
+
+
+🔒 SECURITY FUNCTIONS (Core/Security/Security.ps1)
+================================================================================
+
+Get-UserPermissions            Get effective permissions for a user on a path
+Get-LocalAdminMembers          List all members of local Administrators group
+Get-SecurityAuditReport        Generate a basic security audit report
+Test-PasswordPolicy            Check the current password policy settings
+
+
+⚡ QUICK START OPTIONS
+================================================================================
+
+Option 1: Load All Functions
+────────────────────────────
+$base = 'https://raw.githubusercontent.com/nicotav/powershell/main/Core'
+@('Network/Network', 'System/System', 'Storage/Storage', 'Services/Services', 
+  'Security/Security') | ForEach-Object { iex (irm "$base/$_.ps1") }
+
+
+Option 2: Load Specific Module
+──────────────────────────────
+iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/Network/Network.ps1')
+
+
+Option 3: View This Map
+──────────────────────
+irm 'https://raw.githubusercontent.com/nicotav/powershell/main/ConsoleMap.txt'
+
+
+Option 4: Clone Repository
+──────────────────────────
+git clone https://github.com/nicotav/powershell.git
+
+
+Option 5: Run Examples
+──────────────────────
+iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Examples.ps1')
+
+
+📚 USAGE EXAMPLES
+================================================================================
+
+# Load Network functions
+iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/Network/Network.ps1')
+Test-NetworkConnectivity -Target "google.com"
+Get-DNSResolution -Hostname "microsoft.com"
+
+# Load System functions
+iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/System/System.ps1')
+Get-SystemInfo
+Get-SystemUptime
+
+# Load Storage functions
+iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/Storage/Storage.ps1')
+Get-DiskSpaceReport -ThresholdPercent 20
+Find-LargeFiles -Path "C:\Users" -MinSizeMB 100
+
+
+🔗 HELPFUL LINKS
+================================================================================
+
+Repository:   https://github.com/nicotav/powershell
+Raw Content:  https://raw.githubusercontent.com/nicotav/powershell/main/
+Issues:       https://github.com/nicotav/powershell/issues
+
+
+================================================================================
+For questions or contributions, visit the GitHub repository.
+Last Updated: January 6, 2026
+================================================================================
