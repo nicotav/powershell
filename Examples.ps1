@@ -1,157 +1,139 @@
 #Requires -Version 5.1
 <#
 .SYNOPSIS
-    Showcase script demonstrating all available troubleshooting functions.
+    Examples and usage guide for PowerShell Troubleshooting Scripts.
 
 .DESCRIPTION
-    This script provides examples of how to use each function from the Core modules.
-    Run this script to see all available functions and their usage patterns.
+    This script demonstrates how to use individual snippet files from the
+    PowerShell troubleshooting repository.
 
 .NOTES
-    Author: Your Name
-    Date: January 2026
-    Version: 1.0.0
+    All snippet files are completely standalone and ready to execute.
+    Copy any URL and run: iex (irm 'url')
 #>
 
-#region Module Import
-# Import all Core modules
-$CorePath = Join-Path -Path $PSScriptRoot -ChildPath "Core"
-
-. "$CorePath\Network\Network.ps1"
-. "$CorePath\System\System.ps1"
-. "$CorePath\Storage\Storage.ps1"
-. "$CorePath\Services\Services.ps1"
-. "$CorePath\Security\Security.ps1"
-
-Write-Host "All Core modules loaded successfully!" -ForegroundColor Green
 Write-Host ""
-#endregion
-
-#region Network Examples
-Write-Host "=" * 60 -ForegroundColor Yellow
-Write-Host "NETWORK TROUBLESHOOTING EXAMPLES" -ForegroundColor Yellow
-Write-Host "=" * 60 -ForegroundColor Yellow
+Write-Host "╔════════════════════════════════════════════════════════════╗" -ForegroundColor Cyan
+Write-Host "║     PowerShell Troubleshooting Scripts - Usage Guide        ║" -ForegroundColor Cyan
+Write-Host "╚════════════════════════════════════════════════════════════╝" -ForegroundColor Cyan
 Write-Host ""
 
-# Example 1: Test basic connectivity
-Write-Host "Example: Test network connectivity to google.com" -ForegroundColor Magenta
-Test-NetworkConnectivity -Target "google.com"
+Write-Host "NETWORK TROUBLESHOOTING" -ForegroundColor Yellow
+Write-Host "══════════════════════════════════════════════════════════════" -ForegroundColor Yellow
+Write-Host ""
+Write-Host "Individual Tools:" -ForegroundColor Cyan
+Write-Host "  Test-NetworkConnectivity.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/Network/Test-NetworkConnectivity.ps1')" -ForegroundColor Gray
+Write-Host ""
+Write-Host "  Get-DNSResolution.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/Network/Get-DNSResolution.ps1')" -ForegroundColor Gray
+Write-Host ""
+Write-Host "  Get-FirewallStatus.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/Network/Get-FirewallStatus.ps1')" -ForegroundColor Gray
+Write-Host ""
+Write-Host "Diagnostic Plan (runs all together):" -ForegroundColor Cyan
+Write-Host "  Network-DiagnosticPlan.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/Network/Network-DiagnosticPlan.ps1')" -ForegroundColor Gray
+Write-Host ""
 Write-Host ""
 
-# Example 2: Test connectivity with port
-Write-Host "Example: Test connectivity to a specific port" -ForegroundColor Magenta
-Test-NetworkConnectivity -Target "google.com" -Port 443
+Write-Host "SYSTEM DIAGNOSTICS" -ForegroundColor Yellow
+Write-Host "══════════════════════════════════════════════════════════════" -ForegroundColor Yellow
+Write-Host ""
+Write-Host "Individual Tools:" -ForegroundColor Cyan
+Write-Host "  Get-SystemInfo.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/System/Get-SystemInfo.ps1')" -ForegroundColor Gray
+Write-Host ""
+Write-Host "  Get-EventLogErrors.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/System/Get-EventLogErrors.ps1')" -ForegroundColor Gray
+Write-Host ""
+Write-Host "  Get-SystemUptime.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/System/Get-SystemUptime.ps1')" -ForegroundColor Gray
+Write-Host ""
+Write-Host "  Get-PerformanceSnapshot.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/System/Get-PerformanceSnapshot.ps1')" -ForegroundColor Gray
+Write-Host ""
+Write-Host "Diagnostic Plan (runs all together):" -ForegroundColor Cyan
+Write-Host "  System-DiagnosticPlan.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/System/System-DiagnosticPlan.ps1')" -ForegroundColor Gray
+Write-Host ""
 Write-Host ""
 
-# Example 3: DNS Resolution
-Write-Host "Example: Resolve DNS for a hostname" -ForegroundColor Magenta
-Get-DNSResolution -Hostname "microsoft.com"
+Write-Host "STORAGE UTILITIES" -ForegroundColor Yellow
+Write-Host "══════════════════════════════════════════════════════════════" -ForegroundColor Yellow
+Write-Host ""
+Write-Host "Individual Tools:" -ForegroundColor Cyan
+Write-Host "  Get-DiskSpaceReport.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/Storage/Get-DiskSpaceReport.ps1')" -ForegroundColor Gray
+Write-Host ""
+Write-Host "  Find-LargeFiles.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/Storage/Find-LargeFiles.ps1')" -ForegroundColor Gray
+Write-Host ""
+Write-Host "  Clear-TempFiles.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/Storage/Clear-TempFiles.ps1')" -ForegroundColor Gray
+Write-Host ""
+Write-Host "Diagnostic Plan (runs all together):" -ForegroundColor Cyan
+Write-Host "  Storage-DiagnosticPlan.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/Storage/Storage-DiagnosticPlan.ps1')" -ForegroundColor Gray
+Write-Host ""
 Write-Host ""
 
-# Example 4: Firewall Status
-Write-Host "Example: Check firewall status" -ForegroundColor Magenta
-Get-FirewallStatus
+Write-Host "SERVICES MANAGEMENT" -ForegroundColor Yellow
+Write-Host "══════════════════════════════════════════════════════════════" -ForegroundColor Yellow
 Write-Host ""
-#endregion
-
-#region System Examples
-Write-Host "=" * 60 -ForegroundColor Yellow
-Write-Host "SYSTEM DIAGNOSTICS EXAMPLES" -ForegroundColor Yellow
-Write-Host "=" * 60 -ForegroundColor Yellow
+Write-Host "Individual Tools:" -ForegroundColor Cyan
+Write-Host "  Get-ServiceStatus.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/Services/Get-ServiceStatus.ps1')" -ForegroundColor Gray
 Write-Host ""
-
-# Example 1: Get system information
-Write-Host "Example: Get comprehensive system information" -ForegroundColor Magenta
-Get-SystemInfo
+Write-Host "  Get-FailedServices.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/Services/Get-FailedServices.ps1')" -ForegroundColor Gray
 Write-Host ""
-
-# Example 2: Get event log errors
-Write-Host "Example: Get recent errors from System event log" -ForegroundColor Magenta
-Get-EventLogErrors -LogName "System" -Hours 24
+Write-Host "  Get-ServiceDependencies.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/Services/Get-ServiceDependencies.ps1')" -ForegroundColor Gray
 Write-Host ""
-
-# Example 3: Get system uptime
-Write-Host "Example: Check system uptime" -ForegroundColor Magenta
-Get-SystemUptime
+Write-Host "  Restart-ServiceSafely.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/Services/Restart-ServiceSafely.ps1')" -ForegroundColor Gray
+Write-Host ""
+Write-Host "Diagnostic Plan (runs all together):" -ForegroundColor Cyan
+Write-Host "  Services-DiagnosticPlan.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/Services/Services-DiagnosticPlan.ps1')" -ForegroundColor Gray
+Write-Host ""
 Write-Host ""
 
-# Example 4: Performance snapshot
-Write-Host "Example: Take a performance snapshot" -ForegroundColor Magenta
-Get-PerformanceSnapshot
+Write-Host "SECURITY HELPERS" -ForegroundColor Yellow
+Write-Host "══════════════════════════════════════════════════════════════" -ForegroundColor Yellow
 Write-Host ""
-#endregion
-
-#region Storage Examples
-Write-Host "=" * 60 -ForegroundColor Yellow
-Write-Host "STORAGE UTILITY EXAMPLES" -ForegroundColor Yellow
-Write-Host "=" * 60 -ForegroundColor Yellow
+Write-Host "Individual Tools:" -ForegroundColor Cyan
+Write-Host "  Get-UserPermissions.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/Security/Get-UserPermissions.ps1')" -ForegroundColor Gray
 Write-Host ""
-
-# Example 1: Disk space report
-Write-Host "Example: Generate disk space report" -ForegroundColor Magenta
-Get-DiskSpaceReport -ThresholdPercent 20
+Write-Host "  Get-LocalAdminMembers.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/Security/Get-LocalAdminMembers.ps1')" -ForegroundColor Gray
 Write-Host ""
-
-# Example 2: Find large files
-Write-Host "Example: Find large files in a directory" -ForegroundColor Magenta
-Find-LargeFiles -Path "C:\Windows\Temp" -MinSizeMB 50 -TopN 10
+Write-Host "  Get-SecurityAuditReport.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/Security/Get-SecurityAuditReport.ps1')" -ForegroundColor Gray
 Write-Host ""
-
-# Example 3: Clear temp files (WhatIf mode)
-Write-Host "Example: Preview temp file cleanup" -ForegroundColor Magenta
-Clear-TempFiles -WhatIf
+Write-Host "  Test-PasswordPolicy.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/Security/Test-PasswordPolicy.ps1')" -ForegroundColor Gray
 Write-Host ""
-#endregion
-
-#region Services Examples
-Write-Host "=" * 60 -ForegroundColor Yellow
-Write-Host "SERVICES MANAGEMENT EXAMPLES" -ForegroundColor Yellow
-Write-Host "=" * 60 -ForegroundColor Yellow
+Write-Host "Diagnostic Plan (runs all together):" -ForegroundColor Cyan
+Write-Host "  Security-DiagnosticPlan.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/Security/Security-DiagnosticPlan.ps1')" -ForegroundColor Gray
+Write-Host ""
 Write-Host ""
 
-# Example 1: Check service status
-Write-Host "Example: Check Print Spooler service status" -ForegroundColor Magenta
-Get-ServiceStatus -ServiceName "Spooler"
+Write-Host "╔════════════════════════════════════════════════════════════╗" -ForegroundColor Cyan
+Write-Host "║                      HOW TO USE                            ║" -ForegroundColor Cyan
+Write-Host "╚════════════════════════════════════════════════════════════╝" -ForegroundColor Cyan
 Write-Host ""
-
-# Example 2: Find failed services
-Write-Host "Example: Find services that should be running but aren't" -ForegroundColor Magenta
-Get-FailedServices
+Write-Host "Step 1: Copy any URL from above" -ForegroundColor Green
+Write-Host "Step 2: Open PowerShell" -ForegroundColor Green
+Write-Host "Step 3: Paste the command:" -ForegroundColor Green
+Write-Host "  iex (irm 'full-url-here')" -ForegroundColor Magenta
+Write-Host "Step 4: The script will execute immediately" -ForegroundColor Green
 Write-Host ""
-
-# Example 3: Service dependencies
-Write-Host "Example: Get service dependency tree" -ForegroundColor Magenta
-Get-ServiceDependencies -ServiceName "Spooler"
+Write-Host "Tips:" -ForegroundColor Cyan
+Write-Host "  • All files are standalone - no dependencies required" -ForegroundColor Gray
+Write-Host "  • Diagnostic Plans run multiple checks for complete analysis" -ForegroundColor Gray
+Write-Host "  • Individual tools let you focus on specific troubleshooting" -ForegroundColor Gray
 Write-Host ""
-#endregion
-
-#region Security Examples
-Write-Host "=" * 60 -ForegroundColor Yellow
-Write-Host "SECURITY HELPER EXAMPLES" -ForegroundColor Yellow
-Write-Host "=" * 60 -ForegroundColor Yellow
-Write-Host ""
-
-# Example 1: Check user permissions
-Write-Host "Example: Check permissions on a folder" -ForegroundColor Magenta
-Get-UserPermissions -Path "C:\Windows"
-Write-Host ""
-
-# Example 2: List local administrators
-Write-Host "Example: List local administrator accounts" -ForegroundColor Magenta
-Get-LocalAdminMembers
-Write-Host ""
-
-# Example 3: Security audit
-Write-Host "Example: Generate security audit report" -ForegroundColor Magenta
-Get-SecurityAuditReport
-Write-Host ""
-
-# Example 4: Password policy
-Write-Host "Example: Check password policy" -ForegroundColor Magenta
-Test-PasswordPolicy
-Write-Host ""
-#endregion
-
-Write-Host "=" * 60 -ForegroundColor Green
-Write-Host "All examples completed!" -ForegroundColor Green
-Write-Host "=" * 60 -ForegroundColor Green
