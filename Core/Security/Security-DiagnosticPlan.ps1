@@ -27,11 +27,11 @@ function Get-SecurityAuditReport {
     $profiles = Get-NetFirewallProfile
     $allEnabled = $true
     
-    foreach ($profile in $profiles) {
-        if ($profile.Enabled) {
-            Write-Host "  ✓ $($profile.Name): ENABLED" -ForegroundColor Green
+    foreach ($fwProfile in $profiles) {
+        if ($fwProfile.Enabled) {
+            Write-Host "  ✓ $($fwProfile.Name): ENABLED" -ForegroundColor Green
         } else {
-            Write-Host "  ✗ $($profile.Name): DISABLED" -ForegroundColor Red
+            Write-Host "  ✗ $($fwProfile.Name): DISABLED" -ForegroundColor Red
             $allEnabled = $false
         }
     }

@@ -73,4 +73,6 @@ function Get-ServiceDependencies {
 $serviceName = Read-Host "Enter service name"
 if ($serviceName) {
     Get-ServiceDependencies -ServiceName $serviceName
+} else {
+    Write-Host "No service name provided. Exiting." -ForegroundColor Yellow
 }

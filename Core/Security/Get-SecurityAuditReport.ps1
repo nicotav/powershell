@@ -29,10 +29,10 @@ function Get-SecurityAuditReport {
         Write-Host ""
         Write-Host "Windows Firewall:" -ForegroundColor Cyan
         $profiles = Get-NetFirewallProfile
-        foreach ($profile in $profiles) {
-            $status = if ($profile.Enabled) { "✓ ENABLED" } else { "✗ DISABLED" }
-            $statusColor = if ($profile.Enabled) { "Green" } else { "Red" }
-            Write-Host "  $($profile.Name): $status" -ForegroundColor $statusColor
+        foreach ($fwProfile in $profiles) {
+            $status = if ($fwProfile.Enabled) { "✓ ENABLED" } else { "✗ DISABLED" }
+            $statusColor = if ($fwProfile.Enabled) { "Green" } else { "Red" }
+            Write-Host "  $($fwProfile.Name): $status" -ForegroundColor $statusColor
         }
 
         # UAC Status

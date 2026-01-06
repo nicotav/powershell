@@ -59,4 +59,6 @@ function Get-ServiceStatus {
 $serviceName = Read-Host "Enter service name"
 if ($serviceName) {
     Get-ServiceStatus -ServiceName $serviceName
+} else {
+    Write-Host "No service name provided. Exiting." -ForegroundColor Yellow
 }

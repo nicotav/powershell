@@ -25,13 +25,13 @@ function Get-FirewallStatus {
 
         $profiles = Get-NetFirewallProfile
 
-        foreach ($profile in $profiles) {
-            $status = if ($profile.Enabled) { "✓ ENABLED" } else { "✗ DISABLED" }
-            $statusColor = if ($profile.Enabled) { "Green" } else { "Yellow" }
+        foreach ($fwProfile in $profiles) {
+            $status = if ($fwProfile.Enabled) { "✓ ENABLED" } else { "✗ DISABLED" }
+            $statusColor = if ($fwProfile.Enabled) { "Green" } else { "Yellow" }
 
-            Write-Host "$($profile.Name) Profile: $status" -ForegroundColor $statusColor
-            Write-Host "  Default Inbound Action: $($profile.DefaultInboundAction)" -ForegroundColor Gray
-            Write-Host "  Default Outbound Action: $($profile.DefaultOutboundAction)" -ForegroundColor Gray
+            Write-Host "$($fwProfile.Name) Profile: $status" -ForegroundColor $statusColor
+            Write-Host "  Default Inbound Action: $($fwProfile.DefaultInboundAction)" -ForegroundColor Gray
+            Write-Host "  Default Outbound Action: $($fwProfile.DefaultOutboundAction)" -ForegroundColor Gray
             Write-Host ""
         }
 

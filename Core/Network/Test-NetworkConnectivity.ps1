@@ -61,12 +61,11 @@ function Test-NetworkConnectivity {
 }
 
 # Execute function with user input
-if ($null -eq $Target) {
-    $Target = Read-Host "Enter target host (hostname or IP)"
-}
+$Target = Read-Host "Enter target host (hostname or IP)"
+$portInput = Read-Host "Enter port number (leave blank to skip)"
 
-if ($Port) {
-    Test-NetworkConnectivity -Target $Target -Port $Port
+if ($portInput) {
+    Test-NetworkConnectivity -Target $Target -Port ([int]$portInput)
 } else {
     Test-NetworkConnectivity -Target $Target
 }

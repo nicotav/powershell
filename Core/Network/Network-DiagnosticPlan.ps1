@@ -74,11 +74,11 @@ function Get-FirewallStatus {
         $profiles = Get-NetFirewallProfile
         $allEnabled = $true
 
-        foreach ($profile in $profiles) {
-            if ($profile.Enabled) {
-                Write-Host "✓ $($profile.Name) profile - ENABLED" -ForegroundColor Green
+        foreach ($fwProfile in $profiles) {
+            if ($fwProfile.Enabled) {
+                Write-Host "✓ $($fwProfile.Name) profile - ENABLED" -ForegroundColor Green
             } else {
-                Write-Host "⚠ $($profile.Name) profile - DISABLED" -ForegroundColor Yellow
+                Write-Host "⚠ $($fwProfile.Name) profile - DISABLED" -ForegroundColor Yellow
                 $allEnabled = $false
             }
         }

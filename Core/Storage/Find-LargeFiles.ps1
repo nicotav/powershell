@@ -80,4 +80,6 @@ function Find-LargeFiles {
 $targetPath = Read-Host "Enter path to search"
 if ($targetPath) {
     Find-LargeFiles -Path $targetPath
+} else {
+    Write-Host "No path provided. Exiting." -ForegroundColor Yellow
 }

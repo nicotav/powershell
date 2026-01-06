@@ -68,4 +68,6 @@ function Get-UserPermissions {
 $path = Read-Host "Enter path to check"
 if ($path) {
     Get-UserPermissions -Path $path
+} else {
+    Write-Host "No path provided. Exiting." -ForegroundColor Yellow
 }

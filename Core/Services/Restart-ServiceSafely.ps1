@@ -79,4 +79,6 @@ function Restart-ServiceSafely {
 $serviceName = Read-Host "Enter service name to restart"
 if ($serviceName) {
     Restart-ServiceSafely -ServiceName $serviceName
+} else {
+    Write-Host "No service name provided. Exiting." -ForegroundColor Yellow
 }
