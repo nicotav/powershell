@@ -61,7 +61,7 @@ function Get-LocalAdminMembers {
 }
 
 # Main diagnostic plan
-function Security-DiagnosticPlan {
+function Invoke-SecurityDiagnosticPlan {
     [CmdletBinding()]
     param()
 
@@ -73,12 +73,12 @@ function Security-DiagnosticPlan {
 
     Write-Host "STEP 1: Security Audit" -ForegroundColor Yellow
     Write-Host "─────────────────────────────────────" -ForegroundColor Yellow
-    $securityOk = Get-SecurityAuditReport
+    Get-SecurityAuditReport
     Write-Host ""
 
     Write-Host "STEP 2: Administrator Accounts" -ForegroundColor Yellow
     Write-Host "─────────────────────────────────────" -ForegroundColor Yellow
-    $adminOk = Get-LocalAdminMembers
+    Get-LocalAdminMembers
     Write-Host ""
 
     Write-Host "╔════════════════════════════════════════════════════════════╗" -ForegroundColor Cyan
@@ -95,4 +95,4 @@ function Security-DiagnosticPlan {
 }
 
 # Execute diagnostic plan
-Security-DiagnosticPlan
+Invoke-SecurityDiagnosticPlan

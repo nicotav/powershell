@@ -91,7 +91,7 @@ function Get-FirewallStatus {
 }
 
 # Main diagnostic plan
-function Network-DiagnosticPlan {
+function Invoke-NetworkDiagnosticPlan {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory = $false)]
@@ -136,4 +136,4 @@ function Network-DiagnosticPlan {
 }
 
 # Execute diagnostic plan
-Network-DiagnosticPlan
+Invoke-NetworkDiagnosticPlan

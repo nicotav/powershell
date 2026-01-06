@@ -46,7 +46,7 @@ function Find-LargestFiles {
                  Sort-Object -Property Length -Descending |
                  Select-Object -First 5
 
-        Write-Host "Largest files in $Path:" -ForegroundColor Green
+        Write-Host "Largest files in $($Path):\" -ForegroundColor Green
         foreach ($file in $files) {
             $sizeMB = [math]::Round($file.Length / 1MB, 2)
             Write-Host "  $($file.Name) - $sizeMB MB" -ForegroundColor Gray
@@ -58,7 +58,7 @@ function Find-LargestFiles {
 }
 
 # Main diagnostic plan
-function Storage-DiagnosticPlan {
+function Invoke-StorageDiagnosticPlan {
     [CmdletBinding()]
     param()
 
@@ -91,4 +91,4 @@ function Storage-DiagnosticPlan {
 }
 
 # Execute diagnostic plan
-Storage-DiagnosticPlan
+Invoke-StorageDiagnosticPlan

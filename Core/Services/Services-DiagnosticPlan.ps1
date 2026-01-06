@@ -53,7 +53,7 @@ function Get-CriticalServices {
 }
 
 # Main diagnostic plan
-function Services-DiagnosticPlan {
+function Invoke-ServicesDiagnosticPlan {
     [CmdletBinding()]
     param()
 
@@ -65,7 +65,7 @@ function Services-DiagnosticPlan {
 
     Write-Host "STEP 1: Failed Services Check" -ForegroundColor Yellow
     Write-Host "─────────────────────────────────────" -ForegroundColor Yellow
-    $failedServicesOk = Get-FailedServices
+    Get-FailedServices
     Write-Host ""
 
     Write-Host "STEP 2: Critical Services Status" -ForegroundColor Yellow
@@ -80,4 +80,4 @@ function Services-DiagnosticPlan {
 }
 
 # Execute diagnostic plan
-Services-DiagnosticPlan
+Invoke-ServicesDiagnosticPlan

@@ -65,7 +65,7 @@ function Get-EventLogErrors {
 }
 
 # Main diagnostic plan
-function System-DiagnosticPlan {
+function Invoke-SystemDiagnosticPlan {
     [CmdletBinding()]
     param()
 
@@ -102,4 +102,4 @@ function System-DiagnosticPlan {
 }
 
 # Execute diagnostic plan
-System-DiagnosticPlan
+Invoke-SystemDiagnosticPlan
