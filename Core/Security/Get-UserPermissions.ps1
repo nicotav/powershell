@@ -64,10 +64,40 @@ function Get-UserPermissions {
     }
 }
 
-# Get parameters from user
-$path = Read-Host "Enter path to check"
-if ($path) {
+# Interactive mode - show context first
+Write-Host "╔════════════════════════════════════════════════════════════╗" -ForegroundColor Cyan
+Write-Host "║          USER PERMISSIONS CHECK                            ║" -ForegroundColor Cyan
+Write-Host "╚════════════════════════════════════════════════════════════╝" -ForegroundColor Cyan
+Write-Host ""
+
+# Show current user
+Write-Host "Current User: $env:USERDOMAIN\$env:USERNAME" -ForegroundColor Yellow
+Write-Host ""
+
+# Show common paths to check
+Write-Host "Common paths to check:" -ForegroundColor Cyan
+Write-Host "  1. C:\Program Files" -ForegroundColor Gray
+Write-Host "  2. C:\Windows" -ForegroundColor Gray
+Write-Host "  3. C:\Users\$env:USERNAME" -ForegroundColor Gray
+Write-Host "  4. C:\ProgramData" -ForegroundColor Gray
+Write-Host "  5. Custom path..." -ForegroundColor Gray
+Write-Host ""
+
+$choice = Read-Host "Select option (1-5)"
+$path = switch ($choice) {
+    "1" { "C:\Program Files" }
+    "2" { "C:\Windows" }
+    "3" { "C:\Users\$env:USERNAME" }
+    "4" { "C:\ProgramData" }
+    "5" { Read-Host "Enter custom path" }
+    default { Read-Host "Enter path to check" }
+}
+
+if ($path -and (Test-Path $path)) {
+    Write-Host ""
     Get-UserPermissions -Path $path
+} elseif ($path) {
+    Write-Host "Path not found: $path" -ForegroundColor Red
 } else {
     Write-Host "No path provided. Exiting." -ForegroundColor Yellow
 }

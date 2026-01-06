@@ -10,7 +10,7 @@
     3. Summary and recommendations
 
 .EXAMPLE
-    Storage-DiagnosticPlan
+    Invoke-StorageDiagnosticPlan
 
 .NOTES
     This is a standalone diagnostic plan. Copy and paste or use:

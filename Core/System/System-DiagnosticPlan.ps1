@@ -12,7 +12,7 @@
     5. Summary report
 
 .EXAMPLE
-    System-DiagnosticPlan
+    Start-SystemDiagnosticPlan
 
 .NOTES
     This is a standalone diagnostic plan. Copy and paste or use:
@@ -65,7 +65,7 @@ function Get-EventLogErrors {
 }
 
 # Main diagnostic plan
-function Invoke-SystemDiagnosticPlan {
+function Start-SystemDiagnosticPlan {
     [CmdletBinding()]
     param()
 
@@ -102,4 +102,4 @@ function Invoke-SystemDiagnosticPlan {
 }
 
 # Execute diagnostic plan
-Invoke-SystemDiagnosticPlan
+Start-SystemDiagnosticPlan

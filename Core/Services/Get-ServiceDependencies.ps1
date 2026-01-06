@@ -69,9 +69,35 @@ function Get-ServiceDependencies {
     }
 }
 
-# Get service name from user
-$serviceName = Read-Host "Enter service name"
+# Interactive mode - show available services
+Write-Host "╔════════════════════════════════════════════════════════════╗" -ForegroundColor Cyan
+Write-Host "║          SERVICE DEPENDENCIES ANALYZER                     ║" -ForegroundColor Cyan
+Write-Host "╚════════════════════════════════════════════════════════════╝" -ForegroundColor Cyan
+Write-Host ""
+
+Write-Host "Fetching running services..." -ForegroundColor Yellow
+$runningServices = Get-Service | Where-Object { $_.Status -eq 'Running' } | Sort-Object DisplayName
+
+Write-Host ""
+Write-Host "Select a service to analyze (showing first 20):" -ForegroundColor Cyan
+$runningServices | Select-Object -First 20 | ForEach-Object -Begin { $i = 1 } -Process {
+    Write-Host "  $i. $($_.DisplayName) ($($_.Name))" -ForegroundColor Gray
+    $i++
+}
+Write-Host "  0. Enter custom service name..." -ForegroundColor Gray
+Write-Host ""
+
+$choice = Read-Host "Select option (0-20)"
+if ($choice -eq "0") {
+    $serviceName = Read-Host "Enter service name"
+} elseif ($choice -match '^\d+$' -and [int]$choice -ge 1 -and [int]$choice -le 20) {
+    $serviceName = ($runningServices | Select-Object -First 20)[[int]$choice - 1].Name
+} else {
+    $serviceName = $choice
+}
+
 if ($serviceName) {
+    Write-Host ""
     Get-ServiceDependencies -ServiceName $serviceName
 } else {
     Write-Host "No service name provided. Exiting." -ForegroundColor Yellow

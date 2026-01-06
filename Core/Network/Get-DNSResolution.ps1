@@ -54,9 +54,33 @@ function Get-DNSResolution {
     }
 }
 
-# Execute function with user input
-if ($null -eq $Hostname) {
-    $Hostname = Read-Host "Enter hostname to resolve"
+# Interactive mode - show common hostnames
+Write-Host "╔════════════════════════════════════════════════════════════╗" -ForegroundColor Cyan
+Write-Host "║          DNS RESOLUTION TESTER                              ║" -ForegroundColor Cyan
+Write-Host "╚════════════════════════════════════════════════════════════╝" -ForegroundColor Cyan
+Write-Host ""
+
+Write-Host "Common hostnames to resolve:" -ForegroundColor Cyan
+Write-Host "  1. google.com" -ForegroundColor Gray
+Write-Host "  2. microsoft.com" -ForegroundColor Gray
+Write-Host "  3. github.com" -ForegroundColor Gray
+Write-Host "  4. $env:COMPUTERNAME (local machine)" -ForegroundColor Gray
+Write-Host "  5. Custom hostname..." -ForegroundColor Gray
+Write-Host ""
+
+$choice = Read-Host "Select option (1-5)"
+$Hostname = switch ($choice) {
+    "1" { "google.com" }
+    "2" { "microsoft.com" }
+    "3" { "github.com" }
+    "4" { $env:COMPUTERNAME }
+    "5" { Read-Host "Enter hostname to resolve" }
+    default { Read-Host "Enter hostname to resolve" }
 }
 
-Get-DNSResolution -Hostname $Hostname
+if ($Hostname) {
+    Write-Host ""
+    Get-DNSResolution -Hostname $Hostname
+} else {
+    Write-Host "No hostname provided. Exiting." -ForegroundColor Yellow
+}

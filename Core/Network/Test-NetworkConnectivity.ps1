@@ -60,12 +60,45 @@ function Test-NetworkConnectivity {
     }
 }
 
-# Execute function with user input
-$Target = Read-Host "Enter target host (hostname or IP)"
-$portInput = Read-Host "Enter port number (leave blank to skip)"
+# Interactive mode - show common targets
+Write-Host "╔════════════════════════════════════════════════════════════╗" -ForegroundColor Cyan
+Write-Host "║          NETWORK CONNECTIVITY TEST                         ║" -ForegroundColor Cyan
+Write-Host "╚════════════════════════════════════════════════════════════╝" -ForegroundColor Cyan
+Write-Host ""
 
-if ($portInput) {
-    Test-NetworkConnectivity -Target $Target -Port ([int]$portInput)
+Write-Host "Common targets to test:" -ForegroundColor Cyan
+Write-Host "  1. google.com (Internet connectivity)" -ForegroundColor Gray
+Write-Host "  2. 8.8.8.8 (Google DNS)" -ForegroundColor Gray
+Write-Host "  3. 1.1.1.1 (Cloudflare DNS)" -ForegroundColor Gray
+Write-Host "  4. 127.0.0.1 (Localhost)" -ForegroundColor Gray
+Write-Host "  5. Default gateway" -ForegroundColor Gray
+Write-Host "  6. Custom target..." -ForegroundColor Gray
+Write-Host ""
+
+$choice = Read-Host "Select option (1-6)"
+$Target = switch ($choice) {
+    "1" { "google.com" }
+    "2" { "8.8.8.8" }
+    "3" { "1.1.1.1" }
+    "4" { "127.0.0.1" }
+    "5" { 
+        $gw = (Get-NetRoute -DestinationPrefix '0.0.0.0/0' | Select-Object -First 1).NextHop
+        if ($gw) { $gw } else { Read-Host "No gateway found. Enter target" }
+    }
+    "6" { Read-Host "Enter target host (hostname or IP)" }
+    default { Read-Host "Enter target host (hostname or IP)" }
+}
+
+Write-Host ""
+$portInput = Read-Host "Enter port number (leave blank for ping only)"
+
+if ($Target) {
+    Write-Host ""
+    if ($portInput) {
+        Test-NetworkConnectivity -Target $Target -Port ([int]$portInput)
+    } else {
+        Test-NetworkConnectivity -Target $Target
+    }
 } else {
-    Test-NetworkConnectivity -Target $Target
+    Write-Host "No target provided. Exiting." -ForegroundColor Yellow
 }

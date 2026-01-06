@@ -10,7 +10,7 @@
     3. Summary report
 
 .EXAMPLE
-    Services-DiagnosticPlan
+    Invoke-ServicesDiagnosticPlan
 
 .NOTES
     This is a standalone diagnostic plan. Copy and paste or use:

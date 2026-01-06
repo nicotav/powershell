@@ -14,8 +14,8 @@
     Optional target host to test. Defaults to google.com
 
 .EXAMPLE
-    Network-DiagnosticPlan
-    Network-DiagnosticPlan -TestTarget "192.168.1.1"
+    Start-NetworkDiagnosticPlan
+    Start-NetworkDiagnosticPlan -TestTarget "192.168.1.1"
 
 .NOTES
     This is a standalone diagnostic plan. Copy and paste or use:
@@ -76,9 +76,9 @@ function Get-FirewallStatus {
 
         foreach ($fwProfile in $profiles) {
             if ($fwProfile.Enabled) {
-                Write-Host "✓ $($fwProfile.Name) profile - ENABLED" -ForegroundColor Green
+                Write-Host "✓ $($fwProfile.Name) firewall profile - ENABLED" -ForegroundColor Green
             } else {
-                Write-Host "⚠ $($fwProfile.Name) profile - DISABLED" -ForegroundColor Yellow
+                Write-Host "⚠ $($fwProfile.Name) firewall profile - DISABLED" -ForegroundColor Yellow
                 $allEnabled = $false
             }
         }
@@ -91,7 +91,7 @@ function Get-FirewallStatus {
 }
 
 # Main diagnostic plan
-function Invoke-NetworkDiagnosticPlan {
+function Start-NetworkDiagnosticPlan {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory = $false)]
@@ -136,4 +136,4 @@ function Invoke-NetworkDiagnosticPlan {
 }
 
 # Execute diagnostic plan
-Invoke-NetworkDiagnosticPlan
+Start-NetworkDiagnosticPlan

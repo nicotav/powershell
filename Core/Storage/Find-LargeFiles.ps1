@@ -76,10 +76,46 @@ function Find-LargeFiles {
     }
 }
 
-# Get path from user if not provided
-$targetPath = Read-Host "Enter path to search"
-if ($targetPath) {
+# Interactive mode - show context first
+Write-Host "╔════════════════════════════════════════════════════════════╗" -ForegroundColor Cyan
+Write-Host "║          LARGE FILES FINDER                                ║" -ForegroundColor Cyan
+Write-Host "╚════════════════════════════════════════════════════════════╝" -ForegroundColor Cyan
+Write-Host ""
+
+# Show available drives
+Write-Host "Available drives:" -ForegroundColor Yellow
+$drives = Get-PSDrive -PSProvider FileSystem | Where-Object { $_.Used -gt 0 }
+foreach ($drive in $drives) {
+    $usedGB = [math]::Round($drive.Used / 1GB, 2)
+    $freeGB = [math]::Round($drive.Free / 1GB, 2)
+    Write-Host "  $($drive.Name):\ - Used: $usedGB GB, Free: $freeGB GB" -ForegroundColor Gray
+}
+Write-Host ""
+
+# Show common search locations
+Write-Host "Common locations to search:" -ForegroundColor Cyan
+Write-Host "  1. C:\Users\$env:USERNAME\Downloads" -ForegroundColor Gray
+Write-Host "  2. C:\Users\$env:USERNAME" -ForegroundColor Gray
+Write-Host "  3. C:\Windows\Temp" -ForegroundColor Gray
+Write-Host "  4. C:\Temp" -ForegroundColor Gray
+Write-Host "  5. Custom path..." -ForegroundColor Gray
+Write-Host ""
+
+$choice = Read-Host "Select option (1-5)"
+$targetPath = switch ($choice) {
+    "1" { "C:\Users\$env:USERNAME\Downloads" }
+    "2" { "C:\Users\$env:USERNAME" }
+    "3" { "C:\Windows\Temp" }
+    "4" { "C:\Temp" }
+    "5" { Read-Host "Enter custom path" }
+    default { Read-Host "Enter path to search" }
+}
+
+if ($targetPath -and (Test-Path $targetPath)) {
+    Write-Host ""
     Find-LargeFiles -Path $targetPath
+} elseif ($targetPath) {
+    Write-Host "Path not found: $targetPath" -ForegroundColor Red
 } else {
     Write-Host "No path provided. Exiting." -ForegroundColor Yellow
 }
