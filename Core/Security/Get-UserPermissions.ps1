@@ -45,7 +45,7 @@ function Get-UserPermissions {
         $access = $acl.Access | Where-Object { $_.IdentityReference -match $Username }
 
         if ($access) {
-            Write-Host "✓ Found permissions for $Username:" -ForegroundColor Green
+            Write-Host "✓ Found permissions for $($Username):" -ForegroundColor Green
             Write-Host ""
 
             foreach ($rule in $access) {
