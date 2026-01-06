@@ -13,7 +13,17 @@ powershell/
 │   ├── Services/           # Windows services management
 │   ├── Security/           # Security and permissions helpers
 │   ├── ActiveDirectory/    # Active Directory management and diagnostics
-│   └── ExchangeOnline/     # Exchange Online mailbox and configuration tools
+│   ├── ExchangeOnline/     # Exchange Online mailbox and configuration tools
+│   ├── Azure/              # Azure/Entra ID user and policy management
+│   ├── Microsoft365/       # Microsoft 365, Teams, SharePoint administration
+│   ├── SQL/                # SQL Server database diagnostics
+│   ├── IIS/                # IIS web server and app pool management
+│   ├── HyperV/             # Hyper-V VM management and monitoring
+│   ├── Certificates/       # Certificate expiration and validation
+│   ├── GroupPolicy/        # Group Policy reporting and analysis
+│   ├── Backup/             # Backup status and VSS management
+│   ├── NetworkServices/    # DHCP, DNS server management
+│   └── PrintServer/        # Print server and queue management
 ├── Examples.ps1            # Showcase script demonstrating all functions
 └── README.md
 ```
@@ -29,12 +39,22 @@ The `Core/` folder contains PowerShell modules segregated by their purpose:
 | Folder | Description |
 |--------|-------------|
 | **Network/** | Network connectivity, DNS, firewall diagnostics |
-| **System/** | System info, event logs, performance monitoring |
+| **System/** | System info, event logs, performance monitoring, maintenance |
 | **Storage/** | Disk space, file operations, cleanup utilities |
 | **Services/** | Service status, start/stop, dependency checks |
-| **Security/** | Permissions, user accounts, security audits |
+| **Security/** | Permissions, user accounts, security audits, anomaly detection |
 | **ActiveDirectory/** | AD user/computer/group management, replication health |
 | **ExchangeOnline/** | Mailbox info, permissions, distribution groups, mail flow |
+| **Azure/** | Azure/Entra ID users, Conditional Access, MFA, sign-in logs |
+| **Microsoft365/** | Teams, SharePoint, OneDrive administration |
+| **SQL/** | SQL Server database info, backups, performance |
+| **IIS/** | IIS sites, app pools, bindings |
+| **HyperV/** | Hyper-V VM status, resources, snapshots |
+| **Certificates/** | Certificate expiration monitoring and validation |
+| **GroupPolicy/** | GPO reports, links, and analysis |
+| **Backup/** | Windows Backup status, VSS writers |
+| **NetworkServices/** | DHCP scopes, DNS zones management |
+| **PrintServer/** | Printer status, queue management |
 
 ## 🚀 Getting Started
 
@@ -100,6 +120,35 @@ Test-NetworkConnectivity -Target "8.8.8.8"
 Get-DNSResolution -Hostname "google.com"
 ```
 
-## 📝 Examples
+## � Featured Tools
+
+### Invoke-ComputerMaintenance.ps1
+**Complete automated system maintenance script** that performs:
+- ⏰ Time synchronization with Microsoft servers
+- 🔧 Windows component repair (DISM & SFC)
+- 📦 Windows Update + Driver updates
+- 🏪 Microsoft Store & Winget package updates
+- 🧹 Comprehensive temp file cleanup
+- 🔒 Security hardening checks
+- 📊 Detailed logging and reporting
+- 🔄 Safe restart management
+
+**Usage:** `iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/System/Invoke-ComputerMaintenance.ps1')`
+
+### Invoke-SecurityInspection.ps1
+**First-aid security snapshot and anomaly detection tool** that captures:
+- 🖥️ Complete system configuration
+- 🌐 Network connections and listening ports  
+- ⚙️ Running processes and services
+- 🚀 Startup items and scheduled tasks
+- 👥 User accounts and permissions
+- 📦 Installed software and recent changes
+- 🔍 Security events and failed logons
+- ⚠️ Automated anomaly detection
+- 📄 Interactive HTML report generation
+
+**Usage:** `iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/Security/Invoke-SecurityInspection.ps1')`
+
+## �📝 Examples
 
 See `Examples.ps1` for a comprehensive showcase of all available functions and their usage patterns.
