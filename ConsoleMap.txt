@@ -5,15 +5,19 @@
 powershell/
 ├── Core/
 │   ├── Network/
-│   │   └── Network.ps1
+│   │   └── (3 network diagnostic tools + plan)
 │   ├── System/
-│   │   └── System.ps1
+│   │   └── (4 system diagnostic tools + plan)
 │   ├── Storage/
-│   │   └── Storage.ps1
+│   │   └── (3 storage tools + plan)
 │   ├── Services/
-│   │   └── Services.ps1
-│   └── Security/
-│       └── Security.ps1
+│   │   └── (4 service management tools + plan)
+│   ├── Security/
+│   │   └── (4 security audit tools + plan)
+│   ├── ActiveDirectory/
+│   │   └── (4 AD management tools + plan)
+│   └── ExchangeOnline/
+│       └── (4 Exchange Online tools + plan)
 ├── Examples.ps1
 ├── ConsoleMap.txt
 └── README.md

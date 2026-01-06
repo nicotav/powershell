@@ -122,6 +122,50 @@ Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/m
 Write-Host ""
 Write-Host ""
 
+Write-Host "ACTIVE DIRECTORY" -ForegroundColor Yellow
+Write-Host "══════════════════════════════════════════════════════════════" -ForegroundColor Yellow
+Write-Host ""
+Write-Host "Individual Tools:" -ForegroundColor Cyan
+Write-Host "  Get-ADUserInfo.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/ActiveDirectory/Get-ADUserInfo.ps1')" -ForegroundColor Gray
+Write-Host ""
+Write-Host "  Get-ADGroupMembers.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/ActiveDirectory/Get-ADGroupMembers.ps1')" -ForegroundColor Gray
+Write-Host ""
+Write-Host "  Get-ADComputerStatus.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/ActiveDirectory/Get-ADComputerStatus.ps1')" -ForegroundColor Gray
+Write-Host ""
+Write-Host "  Test-ADReplication.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/ActiveDirectory/Test-ADReplication.ps1')" -ForegroundColor Gray
+Write-Host ""
+Write-Host "Diagnostic Plan (runs all together):" -ForegroundColor Cyan
+Write-Host "  ActiveDirectory-DiagnosticPlan.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/ActiveDirectory/ActiveDirectory-DiagnosticPlan.ps1')" -ForegroundColor Gray
+Write-Host ""
+Write-Host ""
+
+Write-Host "EXCHANGE ONLINE" -ForegroundColor Yellow
+Write-Host "══════════════════════════════════════════════════════════════" -ForegroundColor Yellow
+Write-Host ""
+Write-Host "Individual Tools:" -ForegroundColor Cyan
+Write-Host "  Get-MailboxInfo.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/ExchangeOnline/Get-MailboxInfo.ps1')" -ForegroundColor Gray
+Write-Host ""
+Write-Host "  Get-MailboxPermissions.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/ExchangeOnline/Get-MailboxPermissions.ps1')" -ForegroundColor Gray
+Write-Host ""
+Write-Host "  Get-DistributionGroupMembers.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/ExchangeOnline/Get-DistributionGroupMembers.ps1')" -ForegroundColor Gray
+Write-Host ""
+Write-Host "  Get-MailFlowRules.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/ExchangeOnline/Get-MailFlowRules.ps1')" -ForegroundColor Gray
+Write-Host ""
+Write-Host "Diagnostic Plan (runs all together):" -ForegroundColor Cyan
+Write-Host "  ExchangeOnline-DiagnosticPlan.ps1" -ForegroundColor Green
+Write-Host "    iex (irm 'https://raw.githubusercontent.com/nicotav/powershell/main/Core/ExchangeOnline/ExchangeOnline-DiagnosticPlan.ps1')" -ForegroundColor Gray
+Write-Host ""
+Write-Host ""
+
 Write-Host "╔════════════════════════════════════════════════════════════╗" -ForegroundColor Cyan
 Write-Host "║                      HOW TO USE                            ║" -ForegroundColor Cyan
 Write-Host "╚════════════════════════════════════════════════════════════╝" -ForegroundColor Cyan
@@ -136,4 +180,6 @@ Write-Host "Tips:" -ForegroundColor Cyan
 Write-Host "  • All files are standalone - no dependencies required" -ForegroundColor Gray
 Write-Host "  • Diagnostic Plans run multiple checks for complete analysis" -ForegroundColor Gray
 Write-Host "  • Individual tools let you focus on specific troubleshooting" -ForegroundColor Gray
+Write-Host "  • AD scripts require RSAT tools installed" -ForegroundColor Gray
+Write-Host "  • Exchange scripts require ExchangeOnlineManagement module" -ForegroundColor Gray
 Write-Host ""

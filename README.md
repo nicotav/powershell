@@ -11,7 +11,9 @@ powershell/
 │   ├── System/             # System diagnostics and health checks
 │   ├── Storage/            # Disk and storage utilities
 │   ├── Services/           # Windows services management
-│   └── Security/           # Security and permissions helpers
+│   ├── Security/           # Security and permissions helpers
+│   ├── ActiveDirectory/    # Active Directory management and diagnostics
+│   └── ExchangeOnline/     # Exchange Online mailbox and configuration tools
 ├── Examples.ps1            # Showcase script demonstrating all functions
 └── README.md
 ```
@@ -31,6 +33,8 @@ The `Core/` folder contains PowerShell modules segregated by their purpose:
 | **Storage/** | Disk space, file operations, cleanup utilities |
 | **Services/** | Service status, start/stop, dependency checks |
 | **Security/** | Permissions, user accounts, security audits |
+| **ActiveDirectory/** | AD user/computer/group management, replication health |
+| **ExchangeOnline/** | Mailbox info, permissions, distribution groups, mail flow |
 
 ## 🚀 Getting Started
 
